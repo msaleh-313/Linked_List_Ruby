@@ -104,6 +104,10 @@ class Linked_List
     #     end
     # end
     
+    def searchNode(val)
+
+        puts "Searching Function Created"
+    end
 
 
 
