@@ -44,7 +44,7 @@ class Linked_List
 
     def insert(val)
         if(@head.nil?)
-            insertAtHead(val)
+            @head=Node.new(val)
         else
             temp=@head
             while(temp.next!=nil)
@@ -52,6 +52,44 @@ class Linked_List
             end
             temp.next=Node.new(val)
         end
+    end
+   
+   
+    def insertBefore(key,val)
+        if(@head.nil?)
+            puts "Your List is Empty"
+            
+                                        #if key is at head ,update the head
+        elsif(key==@head.val)
+            temp=Node.new(val)
+            temp.next=@head
+            @head=temp
+
+            
+
+        elsif
+            temp=@head
+            prev=@head
+            while(!temp.next.nil?)        #   temp.next!=nil
+                if(temp.val==key)
+                    prev.next=Node.new(val)
+                    prev.next.next=temp
+                    break
+                else
+                    prev=temp
+                    temp=temp.next
+                end
+            end
+        else
+            puts"Key #{key} not found " 
+        end
+
+
+
+    end
+
+    def insertAfter(val)
+        
     end
 
                                         # Deletion
@@ -133,5 +171,10 @@ list.insert(6)
 
 list.printList()
 puts""
- list.deleteNode(4)
+list.deleteNode(4)
 list.printList()
+list.insertBefore(5,4)
+puts""
+list.printList()
+
+puts list.inspect
