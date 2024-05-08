@@ -88,7 +88,30 @@ class Linked_List
 
     end
 
-    def insertAfter(val)
+    def insertAfter(key,val)
+
+        if @head.nil?
+            puts" Empty List "
+        else
+            temp=@head
+            found=false
+            while temp
+                if temp.val==key
+                    new_node=Node.new(val)
+                    new_node.next=temp.next
+                    temp.next=new_node
+                    found=true
+                    break
+                end
+                    temp=temp.next
+                
+            end
+        end
+        if !found
+            puts"Key Not Found"
+        end
+
+
         
     end
 
@@ -128,19 +151,7 @@ class Linked_List
 
     end
 
-    # def deleteByVal(val)
-    #     temp = @head
-    #     prev = nil
-    #     while temp.next != nil
-    #         if temp.val == val
-    #             prev.next = temp.next
-    #             temp = nil
-    #             break
-    #         end
-    #         prev = temp
-    #         temp = temp.next
-    #     end
-    # end
+    
     
     def searchNode(val)
 
@@ -159,7 +170,7 @@ class Linked_List
 
 end
         
-
+line="\n-------------------------------------------------------\n"
 
 list=Linked_List.new()
 list.insertAtHead(5)
@@ -169,12 +180,19 @@ list.insertAtHead(2)
 list.insertAtHead(1)
 list.insert(6)
 
+puts line
 list.printList()
-puts""
-list.deleteNode(4)
+list.insertAfter(6,7)
+puts line
 list.printList()
-list.insertBefore(5,4)
-puts""
+puts line
+list.insertAfter(0,1)
+puts line
 list.printList()
-
-puts list.inspect
+puts line
+list.insertAfter(1,10)
+list.printList()
+puts line
+list.deleteNode(5)
+puts line
+list.printList()
